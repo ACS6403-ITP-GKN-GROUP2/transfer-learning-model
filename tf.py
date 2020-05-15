@@ -98,7 +98,7 @@ global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
 feature_batch_average = global_average_layer(feature_batch)
 print(feature_batch_average.shape)
 
-prediction_layer = tf.keras.layers.Dense(4)
+prediction_layer = tf.keras.layers.Dense(3)
 prediction_batch = prediction_layer(feature_batch_average)
 print(prediction_batch.shape)
 
@@ -167,7 +167,7 @@ fine_tune_at = 100
 
 # Freeze all the layers before the `fine_tune_at` layer
 for layer in base_model.layers[:fine_tune_at]:
-  layer.trainable =  False
+  layer.trainable = False
 
 # compile the model
 model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
